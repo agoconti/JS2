@@ -1,7 +1,9 @@
 alert("Te damos la bienvenida a la banca digital del BICLA");
 
 let montoANegociar = Number(
-  prompt("Por favor ingresá el monto total de cheques que vas a negociar")
+  prompt(
+    "Por favor ingresá la sumatoria de los montos de los cheques que vas a negociar"
+  )
 );
 
 let plazo = Number(
