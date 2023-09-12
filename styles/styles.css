@@ -1,3 +1,10 @@
 *{
     background-color: antiquewhite;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+    display: flex;
+    text-align: center;
+    font-size: 70px;
 }
