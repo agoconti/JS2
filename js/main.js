@@ -15,28 +15,36 @@ function calculoPrestamo() {
     case 45:
       alert(
         "Acreditaremos $" +
-          parseInt(montoANegociar - montoANegociar * ((0.94 * plazo) / 365)) +
+          (montoANegociar - montoANegociar * ((0.94 * plazo) / 365)).toFixed(
+            2
+          ) +
           " en tu cuenta"
       );
       break;
     case 90:
       alert(
         "Acreditaremos $" +
-          parseInt(montoANegociar - montoANegociar * ((0.98 * plazo) / 365)) +
+          (montoANegociar - montoANegociar * ((0.98 * plazo) / 365)).toFixed(
+            2
+          ) +
           " en tu cuenta"
       );
       break;
     case 180:
       alert(
         "Acreditaremos $" +
-          parseInt(montoANegociar - montoANegociar * ((1.08 * plazo) / 365)) +
+          (montoANegociar - montoANegociar * ((1.08 * plazo) / 365)).toFixed(
+            2
+          ) +
           " en tu cuenta"
       );
       break;
     case 270:
       alert(
         "Acreditaremos $" +
-          parseInt(montoANegociar - montoANegociar * ((1.15 * plazo) / 365)) +
+          (montoANegociar - montoANegociar * ((1.15 * plazo) / 365)).toFixed(
+            2
+          ) +
           " en tu cuenta"
       );
       break;
