@@ -19,51 +19,52 @@ if (tipoCheque == 1) {
     )
   );
 
-  function calculoPrestamo() {
-    switch (plazo) {
-      case 45:
-        alert(
-          "Acreditaremos $" +
-            (montoANegociar - montoANegociar * ((0.94 * plazo) / 365)).toFixed(
-              2
-            ) +
-            " en tu cuenta"
-        );
-        break;
-      case 90:
-        alert(
-          "Acreditaremos $" +
-            (montoANegociar - montoANegociar * ((0.98 * plazo) / 365)).toFixed(
-              2
-            ) +
-            " en tu cuenta"
-        );
-        break;
-      case 180:
-        alert(
-          "Acreditaremos $" +
-            (montoANegociar - montoANegociar * ((1.08 * plazo) / 365)).toFixed(
-              2
-            ) +
-            " en tu cuenta"
-        );
-        break;
-      case 270:
-        alert(
-          "Acreditaremos $" +
-            (montoANegociar - montoANegociar * ((1.15 * plazo) / 365)).toFixed(
-              2
-            ) +
-            " en tu cuenta"
-        );
-        break;
-      default:
-        alert("No se pudo realizar el cálculo correctamente");
-    }
-  }
-  calculoPrestamo();
+  calculoPrestamo(plazo, montoANegociar);
 } else {
   alert("Por favor ingresá 1 ó 2 para poder continuar");
+}
+
+function calculoPrestamo() {
+  switch (plazo) {
+    case 45:
+      alert(
+        "Acreditaremos $" +
+          (montoANegociar - montoANegociar * ((0.94 * plazo) / 365)).toFixed(
+            2
+          ) +
+          " en tu cuenta"
+      );
+      break;
+    case 90:
+      alert(
+        "Acreditaremos $" +
+          (montoANegociar - montoANegociar * ((0.98 * plazo) / 365)).toFixed(
+            2
+          ) +
+          " en tu cuenta"
+      );
+      break;
+    case 180:
+      alert(
+        "Acreditaremos $" +
+          (montoANegociar - montoANegociar * ((1.08 * plazo) / 365)).toFixed(
+            2
+          ) +
+          " en tu cuenta"
+      );
+      break;
+    case 270:
+      alert(
+        "Acreditaremos $" +
+          (montoANegociar - montoANegociar * ((1.15 * plazo) / 365)).toFixed(
+            2
+          ) +
+          " en tu cuenta"
+      );
+      break;
+    default:
+      alert("No se pudo realizar el cálculo correctamente");
+  }
 }
 
 /* let montoANegociar = Number(
