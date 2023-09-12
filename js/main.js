@@ -12,32 +12,32 @@ let plazo = Number(
 
 function calculoPrestamo() {
   switch (plazo) {
-    case "45":
+    case 45:
       alert(
         "Acreditaremos $" +
-          (montoANegociar - montoANegociar * ((0.94 * 45) / 365)) +
-          "en tu cuenta"
+          parseInt(montoANegociar - montoANegociar * ((0.94 * 45) / 365)) +
+          " en tu cuenta"
       );
       break;
-    case "90":
+    case 90:
       alert(
         "Acreditaremos $" +
-          (montoANegociar - montoANegociar * ((0.98 * 90) / 365)) +
-          "en tu cuenta"
+          parseInt(montoANegociar - montoANegociar * ((0.98 * 90) / 365)) +
+          " en tu cuenta"
       );
       break;
-    case "180":
+    case 180:
       alert(
         "Acreditaremos $" +
-          (montoANegociar - montoANegociar * ((1.08 * 180) / 365)) +
-          "en tu cuenta"
+          parseInt(montoANegociar - montoANegociar * ((1.08 * 180) / 365)) +
+          " en tu cuenta"
       );
       break;
-    case "270":
+    case 270:
       alert(
         "Acreditaremos $" +
-          (montoANegociar - montoANegociar * ((1.15 * 270) / 365)) +
-          "en tu cuenta"
+          parseInt(montoANegociar - montoANegociar * ((1.15 * 270) / 365)) +
+          " en tu cuenta"
       );
       break;
     default:
