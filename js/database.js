@@ -43,7 +43,7 @@ const lineasDePrestamos = [
 const lineasDeInversion = [
   {
     id: 1,
-    imagen: "PF.png",
+    imagen: "assets/PF.png",
     nombre: "plazo fijo",
     usuario: "indistinto",
     tasa1: 118,
