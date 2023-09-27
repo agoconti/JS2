@@ -1,3 +1,7 @@
+for (let i=0; i<lineasDeInversion.length; i+=1) {
+  document.write("<div>" + lineasDeInversion[i].imagen + "</div>");
+}
+
 alert("Te damos la bienvenida a la banca digital del BICLA");
 
 let tipoCheque = prompt("Indicanos el tipo de valor a negociar: 1- Cheque físico o 2- e-cheq");
@@ -20,7 +24,8 @@ function calculoPrestamo(plazo, montoANegociar) {
       alert("No se pudo realizar el cálculo correctamente");
   }
 }
-while (tipoCheque != "") {
+
+while (tipoCheque !== null && tipoCheque !== undefined) {
 if (tipoCheque == 1) {
   alert("La operación deberá realizarse en nuestra Sucursal");
 } else if (tipoCheque == 2) {
@@ -33,7 +38,6 @@ if (tipoCheque == 1) {
   alert("Por favor ingresá 1 ó 2 para poder continuar");
 }
 tipoCheque = prompt("Indicanos el tipo de valor a negociar: 1- Cheque físico o 2- e-cheq");
-
 }
 
 //acreditarPrestamo()=> ;

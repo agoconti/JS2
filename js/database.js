@@ -43,6 +43,7 @@ const lineasDePrestamos = [
 const lineasDeInversion = [
   {
     id: 1,
+    imagen: "PF.png",
     nombre: "plazo fijo",
     usuario: "indistinto",
     tasa1: 118,
@@ -53,6 +54,7 @@ const lineasDeInversion = [
   {
     id: 2,
     nombre: "fondo común de inversión",
+    imagen: "assets/FCI.png",
     usuario: "indistinto",
     tasa1: 135,
     montoMinimo: 5000,
