@@ -1,13 +1,16 @@
-for (const item of lineasDeInversion) {
+const inversiones = function mostrarInversiones() {
+  for (const item of lineasDeInversion) {
   document.write("<div style='width: 18rem'>");
   document.write("<img src='" + item.imagen + "' width='500'/>");
   document.write("<div>");
       document.write("<h5>" + item.tasa1 + "% TNA" + "</h5>");
-      console.log(item.tasa1);
       document.write("<p>" + item.perfil + "</p>");
   document.write("</div>");
 document.write("</div>");
 }
+}
+
+mostrarInversiones();
 
 alert("Te damos la bienvenida a la banca digital del BICLA");
 
