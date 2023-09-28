@@ -1,19 +1,19 @@
 const inputBusquedaInversiones = {
-    tasa1: "",
+    rangoDeTasa: "",
     perfil: "",
-    montoMinimo: "",
-    montoMaximo: "10000000",
+    montoAInvertir: "10000000000"
 }   
 
-console.log(inputBusquedaInversiones.montoMaximo);
+console.log(inputBusquedaInversiones);
 
-function filtrarPorPlazo(inversion) {
-    if(inputBusquedaInversiones.montoMaximo) {
-        return inversion.montoMaximo >= inputBusquedaInversiones.montoMaximo;
+function filtrarPorMonto(monto) {
+    if(lineasDeInversion.montoMaximo >= inputBusquedaInversiones.montoAInvertir) {
+        return lineasDeInversion.nombre;
+    } else {
+        console.error("No se encontraron resultados")
     }
-    return inversion;
+    
 }
 
-filtrarPorPlazo(inversion);
+filtrarPorMonto();
 
-console.log(inversion);
