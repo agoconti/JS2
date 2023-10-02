@@ -7,13 +7,15 @@ const inputBusquedaInversiones = {
 console.log(inputBusquedaInversiones);
 
 function filtrarPorMonto(monto) {
-    if(lineasDeInversion.montoMaximo >= inputBusquedaInversiones.montoAInvertir) {
-        return lineasDeInversion.nombre;
-    } else {
-        console.error("No se encontraron resultados")
-    }
+    const lineasFiltradas = lineasDeInversion.filter(linea => linea.montoMaximo >= monto);
     
+    if (lineasFiltradas.length > 0) {
+        return lineasFiltradas.map(linea => linea.nombre);
+    } else {
+        console.error("No se encontraron resultados");
+        return [];
+    }
 }
 
-filtrarPorMonto();
-
+const resultados = filtrarPorMonto(inputBusquedaInversiones.montoAInvertir);
+console.log(resultados);
