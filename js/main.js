@@ -12,22 +12,27 @@ alert("Te damos la bienvenida a la banca digital del BICLA");
 
 let tipoCheque = prompt("Indicanos el tipo de valor a negociar: 1- Cheque físico o 2- e-cheq");
 
+function calcularAcreditacion(plazo, montoANegociar) {
+  if (plazo === lineasDePrestamos[0].plazo1) {
+    return montoANegociar - montoANegociar * ((0.94 * plazo) / 365);
+  } else if (plazo === lineasDePrestamos[0].plazo2) {
+    return montoANegociar - montoANegociar * ((0.98 * plazo) / 365);
+  } else if (plazo === lineasDePrestamos[0].plazo3) {
+    return montoANegociar - montoANegociar * ((1.08 * plazo) / 365);
+  } else if (plazo === lineasDePrestamos[0].plazo4) {
+    return montoANegociar - montoANegociar * ((1.15 * plazo) / 365);
+  } else {
+    return null; // En caso de plazo no válido
+  }
+}
+
 function calculoPrestamo(plazo, montoANegociar) {
-  switch (plazo) {
-    case (lineasDePrestamos[0].plazo1):
-      alert("Acreditaremos $" + (montoANegociar - montoANegociar * ((0.94 * plazo) / 365)).toFixed(2) + " en tu cuenta");
-      break;
-    case (lineasDePrestamos[0].plazo2):
-      alert("Acreditaremos $" + (montoANegociar - montoANegociar * ((0.98 * plazo) / 365)).toFixed(2) + " en tu cuenta");
-      break;
-    case (lineasDePrestamos[0].plazo3):
-      alert("Acreditaremos $" + (montoANegociar - montoANegociar * ((1.08 * plazo) / 365)).toFixed(2) + " en tu cuenta");
-      break;
-    case (lineasDePrestamos[0].plazo4):
-      alert("Acreditaremos $" + (montoANegociar - montoANegociar * ((1.15 * plazo) / 365)).toFixed(2) + " en tu cuenta");
-      break;
-    default:
-      alert("No se pudo realizar el cálculo correctamente");
+  const acreditacion = calcularAcreditacion(plazo, montoANegociar);
+
+  if (acreditacion !== null) {
+    alert("Acreditaremos $" + acreditacion.toFixed(2) + " en tu cuenta");
+  } else {
+    alert("No se pudo realizar el cálculo correctamente");
   }
 }
 
@@ -46,6 +51,4 @@ if (tipoCheque == 1) {
 tipoCheque = prompt("Indicanos el tipo de valor a negociar: 1- Cheque físico o 2- e-cheq");
 }
 
-//acreditarPrestamo()=> ;
 
-//(montoANegociar - montoANegociar * ((lineasDePrestamos[0].tasa1 * plazo) / 365)).toFixed(2)
