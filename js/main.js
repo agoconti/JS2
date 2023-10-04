@@ -1,11 +1,8 @@
 for (const item of lineasDeInversion) {
-  document.write("<div style='width: 18rem'>");
-  document.write("<img src='" + item.imagen + "' width='500'/>");
-  document.write("<div>");
-      document.write("<h5>" + item.tasa1 + "% TNA" + "</h5>");
-      document.write("<p>" + item.perfil + "</p>");
-  document.write("</div>");
-document.write("</div>");
+  console.log(item.nombre);
+  console.log(item.tasa1 + "% TNA");
+  console.log(item.perfil);
+
 }
 
 alert("Te damos la bienvenida a la banca digital del BICLA");
