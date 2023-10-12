@@ -2,7 +2,7 @@ const BIENVENIDA = document.createElement("div");
 BIENVENIDA.innerHTML = ("<h2>Te damos la bienvenida a la banca digital del BICLA</h2>");
 document.body.append(BIENVENIDA);
 
-let tipoCheque = prompt("Indicanos el tipo de valor a negociar: 1- Cheque físico o 2- e-cheq");
+
 
 for (const ITEM of lineasDeInversion) {
   let grillaInversiones = document.createElement("div");
@@ -14,42 +14,35 @@ for (const ITEM of lineasDeInversion) {
   document.body.appendChild(grillaInversiones);
 }
 
-/*function calcularAcreditacion(plazo, montoANegociar) {
-  if (plazo === lineasDePrestamos[0].plazo[0]) {
-    return montoANegociar - montoANegociar * ((lineasDePrestamos.tasa[0] * plazo) / 365);
-  } else if (plazo === lineasDePrestamos[0].plazo[1]) {
-    return montoANegociar - montoANegociar * ((lineasDePrestamos.tasa[1] * plazo) / 365);
-  } else if (plazo === lineasDePrestamos[0].plazo[2]) {
-    return montoANegociar - montoANegociar * ((lineasDePrestamos.tasa[2] * plazo) / 365);
-  } else if (plazo === lineasDePrestamos[0].plazo[3]) {
-    return montoANegociar - montoANegociar * ((lineasDePrestamos.tasa[3] * plazo) / 365);
-  } else {
-    return null; // En caso de plazo no válido
-  }
-}*/
+let tipoCheque = prompt("Indicanos el tipo de valor a negociar: 1- Cheque físico o 2- e-cheq");
 
 function calcularAcreditacion(plazo, montoANegociar) {
   // Busca el índice del elemento con el plazo correspondiente
-  const index = lineasDePrestamos.findIndex((linea) => linea.plazo.includes(plazo));
-
-  if (index !== -1) {
-    const tasa = lineasDePrestamos[index].tasa;
-    return montoANegociar - (montoANegociar * (tasa / 365) * plazo);
+  const INDEX = lineasDePrestamos.findIndex((linea) => linea.plazo.includes(plazo));
+  //console.log(INDEX);
+  if (INDEX !== -1) {
+    const TASA = lineasDePrestamos[INDEX].tasa;
+    //console.log(TASA);
+    return montoANegociar - (montoANegociar * (TASA / 365) * plazo);
   } else {
     return null; // En caso de plazo no válido
   }
 }
+
 
 function calculoPrestamo(plazo, montoANegociar) {
   const acreditacion = calcularAcreditacion(plazo, montoANegociar);
 
   if (acreditacion !== null) {
     let montoAAcreditar = document.createElement("div");
-    montoAAcreditar.innerHTML = (`<p>Acreditaremos $ ${acreditacion.toFixed(2)} en tu cuenta</p>`);
+    montoAAcreditar.innerHTML = (`<p>Acreditaremos $ ${acreditacion} en tu cuenta</p>`);
+    console.log(plazo);
+    console.log(montoANegociar);
+    console.log(acreditacion);
     document.body.append(montoAAcreditar);
-    console.log(montoAAcreditar);
+    //console.log(montoAAcreditar);
   } else {
-    alert("No se pudo realizar el cálculo correctamente");
+    console.log("No se pudo realizar el cálculo correctamente");
   }
 }
 
