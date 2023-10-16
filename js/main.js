@@ -2,19 +2,21 @@ const BIENVENIDA = document.createElement("div");
 BIENVENIDA.innerHTML = ("<h2>Te damos la bienvenida a la banca digital del BICLA</h2>");
 document.body.append(BIENVENIDA);
 
+const INVERSIONES = JSON.parse(inversiones);
 
+console.log(INVERSIONES);
 
-for (const ITEM of lineasDeInversion) {
+for (const inversion of INVERSIONES) {
   let grillaInversiones = document.createElement("div");
 
-  grillaInversiones.innerHTML =   `<img src="${ITEM.imagen}">
-                                  <h3>Perfil ${ITEM.perfil}</>  
-                                  <h3>Tasa ${ITEM.tasa} % T.N.A.</h3>`
+  grillaInversiones.innerHTML =   `<img src="${inversion.imagen}">
+                                  <h3>Perfil ${inversion.perfil}</>  
+                                  <h3>Tasa ${inversion.tasa} % T.N.A.</h3>`
   
   document.body.appendChild(grillaInversiones);
 }
 
-let tipoCheque = prompt("Indicanos el tipo de valor a negociar: 1- Cheque físico o 2- e-cheq");
+
 
 function calcularAcreditacion(plazo, montoANegociar) {
   // Busca el índice del elemento con el plazo correspondiente
@@ -28,7 +30,6 @@ function calcularAcreditacion(plazo, montoANegociar) {
     return null; // En caso de plazo no válido
   }
 }
-
 
 function calculoPrestamo(plazo, montoANegociar) {
   const acreditacion = calcularAcreditacion(plazo, montoANegociar);

@@ -7,7 +7,7 @@ const inputBusquedaInversiones = {
 console.log(inputBusquedaInversiones);
 
 function filtrarPorMonto(monto) {
-    const lineasFiltradas = lineasDeInversion.filter(linea => linea.montoMaximo >= monto);
+    const lineasFiltradas = JSON.parse(inversiones).filter(linea => linea.montoMaximo >= monto);
     
     if (lineasFiltradas.length > 0) {
         return lineasFiltradas.map(linea => linea.nombre);
@@ -20,7 +20,7 @@ function filtrarPorMonto(monto) {
 const res = filtrarPorMonto(inputBusquedaInversiones.montoAInvertir);
 console.log(res);
 
-const buscarPorNombre = lineasDeInversion.find(function(linea) {
+const buscarPorNombre = JSON.parse(inversiones).find(function(linea) {
     return linea.nombre === "plazo fijo";
 });
 
