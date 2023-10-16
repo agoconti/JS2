@@ -1,19 +1,30 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(62, 96, 14);
 }
 
 body {
-    background-image: url("/assets/background.jpg");
+    background-color: bisque;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
 }
 
 h1 {
+    text-align: center;
+    padding: 30px;
+}
+
+.bienvenida {
     display: flex;
     text-align: center;
-    font-size: 70px;
+    padding: 20px;
+}
+
+.inversiones {
+    display: flex;
+
 }

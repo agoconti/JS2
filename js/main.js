@@ -1,8 +1,29 @@
-const BIENVENIDA = document.createElement("div"); 
+const BIENVENIDA = document.querySelector(".bienvenida"); 
 BIENVENIDA.innerHTML = ("<h2>Te damos la bienvenida a la banca digital del BICLA</h2>");
 document.body.append(BIENVENIDA);
 
-const INVERSIONES = JSON.parse(inversiones);
+fetch('inversiones.JSON')
+  .then(response => response.json())
+  .then(data => {
+    const INVERSIONES = data;
+    const grillaInversiones = document.querySelector(".inversiones");
+
+    for (const inversion of INVERSIONES) {
+      const contenedor = document.createElement('div');
+      contenedor.classList.add('row-6');
+      contenedor.innerHTML = `
+        <img src="${inversion.imagen}">
+        <h3>Perfil ${inversion.perfil}</h3>
+        <h3>Tasa ${inversion.tasa} % T.N.A.</h3>
+      `;
+      grillaInversiones.appendChild(contenedor);
+    }
+  })
+  .catch(error => console.error('Error loading inversiones.JSON', error));
+
+
+
+/*const INVERSIONES = JSON.parse(inversiones);
 
 console.log(INVERSIONES);
 
@@ -64,4 +85,4 @@ while (tipoCheque !== null && tipoCheque !== undefined) {
 
 }
 
-
+*/
