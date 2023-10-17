@@ -1,20 +1,10 @@
-[
+const PRESTAMOS = [
   {
     "id": 1,
     "reglamentacion": 245,
     "nombre": "descuento de cheques de pago diferido",
-    "plazo": [
-      45,
-      90,
-      180,
-      270
-    ],
-    "tasa": [
-      94,
-      98,
-      108,
-      115
-    ],
+    "plazo": [45, 90, 180, 270],
+    "tasa": [94, 98, 108, 115],
     "usuario": "indistinto",
     "destino": "indistinto",
     "montoMinimo": 50000,
@@ -42,4 +32,4 @@
     "montoMinimo": 5000000,
     "montoMaximo": 80000000
   }
-]
+];

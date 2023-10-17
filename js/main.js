@@ -4,41 +4,35 @@ BIENVENIDA.innerHTML = ("<h2>Te damos la bienvenida a la banca digital del BICLA
 document.body.append(BIENVENIDA);
 
 //RENDERIZADO DE INVERSIONES
-fetch('inversiones.JSON')
-  .then(response => response.json())
-  .then(data => {
-    const INVERSIONES = data;
-    const grillaInversiones = document.querySelector(".inversiones");
 
-    for (const inversion of INVERSIONES) {
-      const contenedor = document.createElement('div');
-      contenedor.classList.add('row-6');
-      contenedor.innerHTML = `
-        <img src="${inversion.imagen}">
-        <h3>Perfil ${inversion.perfil}</h3>
-        <h3>Tasa ${inversion.tasa} % T.N.A.</h3>
+  const GRILLAINVERSIONES = document.querySelector(".inversiones");
+  for (const inversion of INVERSIONES) {
+    let contenedor = document.createElement('div');
+    contenedor.classList.add('row-6');
+    contenedor.innerHTML = `
+      <img src="${inversion.imagen}">
+      <h3>Perfil ${inversion.perfil}</h3>
+      <h3>Tasa ${inversion.tasa} % T.N.A.</h3>
+    `;
+    GRILLAINVERSIONES.appendChild(contenedor);
+  }
 
-      `;
-      grillaInversiones.appendChild(contenedor);
-    }
-  })
-  .catch(error => console.error('Error loading inversiones.JSON', error));
+//FORMULARIO INVERSIONES
 
-const MONTO = document.querySelector("#monto-plazo-fijo");
-//console.log(MONTO);
-const PLAZOPF = document.querySelector("#plazo-plazo-fijo");
+let formInversiones =document.querySelector("#form-inversiones");
+let monto = document.querySelector("#monto-plazo-fijo");
+let plazoPF = document.querySelector("#plazo-plazo-fijo");
+let resultadoPF = document.querySelector(".resultado-pf");
 
-const RESULTADOPF = document.querySelector("resultado-pf");
-
-localStorage.setItem("monto-plazp-fijo", JSON.stringify(MONTO));
-
-localStorage.setItem("plazo-plazo-fijo", JSON.stringify(PLAZOPF));
-
-function SimularPF (e) {
+formInversiones.addEventListener("submit", (e) => {
   e.preventDefault();
-  MONTO.addEventListener("input", (e) => {
-  RESULTADOPF.innerText = MONTO.value;
-});
+  localStorage.setItem("monto-plazo-fijo", JSON.stringify(monto.value));
+  localStorage.setItem("plazo-plazo-fijo", JSON.stringify(plazoPF.value));
+  formInversiones.reset();
+})
+
+
+
 
 /*
 
