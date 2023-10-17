@@ -1,7 +1,9 @@
+//MENSAJE DE BIENVENIDA
 const BIENVENIDA = document.querySelector(".bienvenida"); 
 BIENVENIDA.innerHTML = ("<h2>Te damos la bienvenida a la banca digital del BICLA</h2>");
 document.body.append(BIENVENIDA);
 
+//RENDERIZADO DE INVERSIONES
 fetch('inversiones.JSON')
   .then(response => response.json())
   .then(data => {
@@ -15,29 +17,30 @@ fetch('inversiones.JSON')
         <img src="${inversion.imagen}">
         <h3>Perfil ${inversion.perfil}</h3>
         <h3>Tasa ${inversion.tasa} % T.N.A.</h3>
+
       `;
       grillaInversiones.appendChild(contenedor);
     }
   })
   .catch(error => console.error('Error loading inversiones.JSON', error));
 
+const MONTO = document.querySelector("#monto-plazo-fijo");
+//console.log(MONTO);
+const PLAZOPF = document.querySelector("#plazo-plazo-fijo");
 
+const RESULTADOPF = document.querySelector("resultado-pf");
 
-/*const INVERSIONES = JSON.parse(inversiones);
+localStorage.setItem("monto-plazp-fijo", JSON.stringify(MONTO));
 
-console.log(INVERSIONES);
+localStorage.setItem("plazo-plazo-fijo", JSON.stringify(PLAZOPF));
 
-for (const inversion of INVERSIONES) {
-  let grillaInversiones = document.createElement("div");
+function SimularPF (e) {
+  e.preventDefault();
+  MONTO.addEventListener("input", (e) => {
+  RESULTADOPF.innerText = MONTO.value;
+});
 
-  grillaInversiones.innerHTML =   `<img src="${inversion.imagen}">
-                                  <h3>Perfil ${inversion.perfil}</>  
-                                  <h3>Tasa ${inversion.tasa} % T.N.A.</h3>`
-  
-  document.body.appendChild(grillaInversiones);
-}
-
-
+/*
 
 function calcularAcreditacion(plazo, montoANegociar) {
   // Busca el índice del elemento con el plazo correspondiente
