@@ -22,7 +22,6 @@ document.body.append(BIENVENIDA);
 let formInversiones =document.querySelector("#form-inversiones");
 let monto = document.querySelector("#monto-plazo-fijo");
 let plazoPF = document.querySelector("#plazo-plazo-fijo");
-let resultadoPF = document.querySelector(".resultado-pf");
 
 formInversiones.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -31,7 +30,21 @@ formInversiones.addEventListener("submit", (e) => {
   formInversiones.reset();
 })
 
+//CALCULO PLAZO FIJO
 
+let resultadoPF = document.querySelector(".resultado-pf");
+
+let montoEnStorage = JSON.parse(localStorage.getItem("monto-plazo-fijo"));
+let plazoEnStorage = JSON.parse(localStorage.getItem("plazo-plazo-fijo"));
+let tasa = INVERSIONES[0].tasa;
+
+function res(monto, tasa, plazo) {
+  return monto + (monto * (tasa * plazo / 365));
+}
+
+let resultado = res(montoEnStorage, tasa, plazoEnStorage);
+
+resultadoPF.innerText = `Tu capital de $${montoEnStorage} rendirá $ ${resultado} al cabo de ${plazoEnStorage} días`;
 
 
 /*
