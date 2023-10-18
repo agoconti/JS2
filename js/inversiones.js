@@ -4,7 +4,7 @@ const INVERSIONES = [
       "imagen": "assets/PF.png",
       "nombre": "plazo fijo",
       "usuario": "indistinto",
-      "tasa": 118,
+      "tasa": 133,
       "montoMinimo": 500,
       "montoMaximo": 10000000000,
       "perfil": "conservador"
