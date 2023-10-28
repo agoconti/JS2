@@ -2,20 +2,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(62, 96, 14);
 }
 
 body {
-    background-color: bisque;
+    background-color: rgba(201, 221, 200, 0.877);
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
+    font-family: 'Lilita One', sans-serif;
 }
 
 h1 {
     text-align: center;
     padding: 30px;
+    font-size: 80px;
 }
 
 .bienvenida {
@@ -26,5 +27,5 @@ h1 {
 
 .inversiones {
     display: flex;
-
+    max-width: 100%;
 }

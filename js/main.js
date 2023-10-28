@@ -19,20 +19,42 @@ for (const inversion of INVERSIONES) {
 
 //FORMULARIO PLAZO FIJO
 
-let formInversiones =document.querySelector("#form-inversiones");
+let formInversiones = document.querySelector("#form-inversiones");
 let monto = document.querySelector("#monto-plazo-fijo");
 let plazoPF = document.querySelector("#plazo-plazo-fijo");
 
 formInversiones.addEventListener("submit", (e) => {
   e.preventDefault();
-  localStorage.setItem("monto-plazo-fijo", JSON.stringify(monto.value));
-  localStorage.setItem("plazo-plazo-fijo", JSON.stringify(plazoPF.value));
-  formInversiones.reset();
+  
+  if (validarMonto() && validarPlazo()) {
+    localStorage.setItem("monto-plazo-fijo", JSON.stringify(monto.value));
+    localStorage.setItem("plazo-plazo-fijo", JSON.stringify(plazoPF.value));
+    formInversiones.reset();
+    
+    let resultado = res(montoEnStorage, tasa, plazoEnStorage);
+    
+    resultadoPF.innerText = `Tu capital de $${montoEnStorage} rendirá $${Number(resultado.toFixed(2))} al cabo de ${plazoEnStorage} días`;
+  }
+});
 
-  let resultado = res(montoEnStorage, tasa, plazoEnStorage);
+function validarMonto() {
+  let montoValue = parseFloat(monto.value);
+  if (isNaN(montoValue) || montoValue <= 0) {
+    Swal.fire('Ingresá un monto válido mayor que cero');
+    return false;
+  }
+  return true;
+}
 
-  resultadoPF.innerText = `Tu capital de $${montoEnStorage} rendirá $${Number(resultado.toFixed(2))} al cabo de ${plazoEnStorage} días`;
-})
+function validarPlazo() {
+  let plazoValue = parseInt(plazoPF.value);
+  if (isNaN(plazoValue) || plazoValue <= 0) {
+    Swal.fire('Ingresá un plazo válido mayor que cero');
+    return false;
+  }
+  return true;
+}
+
 
 //CALCULO PLAZO FIJO
 
