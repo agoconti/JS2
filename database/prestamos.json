@@ -3,22 +3,13 @@
     "id": 1,
     "reglamentacion": 245,
     "nombre": "descuento de cheques de pago diferido",
-    "plazo": [
-      45,
-      90,
-      180,
-      270
-    ],
-    "tasa": [
-      94,
-      98,
-      108,
-      115
-    ],
+    "plazo": 3,
+    "tasa": 119,
     "usuario": "indistinto",
-    "destino": "indistinto",
+    "destino": "libre",
     "montoMinimo": 50000,
-    "montoMaximo": "indistinto"
+    "montoMaximo": "indistinto",
+    "imagen": "assets/245.png"
   },
   {
     "id": 2,
@@ -29,7 +20,8 @@
     "usuario": "micro",
     "destino": "capital de trabajo",
     "montoMinimo": 100000,
-    "montoMaximo": 4000000
+    "montoMaximo": 4000000,
+    "imagen": "assets/629.png"
   },
   {
     "id": 3,
@@ -40,6 +32,7 @@
     "usuario": "pyme",
     "destino": "inversion",
     "montoMinimo": 5000000,
-    "montoMaximo": 80000000
+    "montoMaximo": 80000000,
+    "imagen": "assets/629.png"
   }
 ]

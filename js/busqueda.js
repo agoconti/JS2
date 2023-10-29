@@ -11,6 +11,7 @@ class ProductoFinanciero {
       this.destino = destino;
       this.montoMinimo = montoMinimo;
       this.montoMaximo = montoMaximo;
+      this.imagen = imagen;
     };
     calcularInteres(plazoSolicitado, montoSolicitado) {
         if (this.plazo.includes(plazoSolicitado) && montoSolicitado >= this.montoMinimo && (this.montoMaximo === 'indistinto' || montoSolicitado <= this.montoMaximo)) {

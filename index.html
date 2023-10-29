@@ -21,9 +21,11 @@
       <h2>Te damos la bienvenida a tu banca digital</h2>
     </div>
 
-    <div class="inversiones row"></div>
+    <div class="inversiones row">
+      <h2 class="cartera">CARTERA DE INVERSIONES</h2>
+    </div>
 
-    <div class="simulador-plazo fijo">
+    <div class="simulador-plazo fijo row">
       <div class="col-6 simulador">
         <h4>SIMULÁ TU PLAZO FIJO</h4>
 
@@ -42,8 +44,29 @@
       </div>
     </div>
 
-    <div class="prestamos row"></div>
-    
+    <div class="prestamos row">
+      <h2 class="cartera">CARTERA DE PRÉSTAMOS</h2>
+    </div>
+
+    <div class="calculadora-prestamo row">
+      <div class="col-4 calculadora">
+        <h4>BUSCÁ TU PRÉSTAMO</h4>
+
+        <form method="post" id="form-prestamos">
+          
+          <label for="Monto">Monto</label>
+          <input type="number" id="monto-prestamo" value="monto" required><br>
+  
+          <label for="Plazo">Plazo en meses</label>
+          <input type="number" id="plazo-prestamo" value="plazo" required><br>
+  
+          <input type="submit" value="Buscá">
+
+          <p class="resultado-prestamo"></p>
+      </form>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/busqueda.js"></script>
     <script src="js/main.js"></script>
