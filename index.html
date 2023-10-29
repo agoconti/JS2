@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,19 +17,22 @@
 
     <h1>Banco Industrial y Comercial Latinoamericano</h1>
     
-    <div class="bienvenida"></div>
+    <div class="bienvenida row">
+      <h2>Te damos la bienvenida a tu banca digital</h2>
+    </div>
 
-    <div class="inversiones col-12"></div>
+    <div class="inversiones row"></div>
 
     <div class="simulador-plazo fijo">
-      <h4>SIMULÁ TU PLAZO FIJO</h4>
-      <div class="col-6">
+      <div class="col-6 simulador">
+        <h4>SIMULÁ TU PLAZO FIJO</h4>
+
         <form method="post" id="form-inversiones">
           
           <label for="Monto">Monto</label>
           <input type="number" id="monto-plazo-fijo" value="monto" required><br>
   
-          <label for="Plazo">Plazo:</label>
+          <label for="Plazo">Plazo</label>
           <input type="number" id="plazo-plazo-fijo" value="plazo" required><br>
   
           <input type="submit" value="Simulá">
@@ -39,14 +42,9 @@
       </div>
     </div>
 
-    <div class="prestamos col-12">
-      <div class="reg245 row-4"></div>
-      <div class="reg629 row-4"> </div>
-      <div class="reg750 row-4"></div>
-    </div>
+    <div class="prestamos row"></div>
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/inversiones.js"></script>
-    <script src="js/prestamos.js"></script>
     <script src="js/busqueda.js"></script>
     <script src="js/main.js"></script>
   </body>

@@ -1,25 +1,39 @@
-/* const inputBusquedaInversiones = {
-    rangoDeTasa: "",
-    perfil: "",
-    montoAInvertir: "10000000000"
-};   
+// CONSTRUCTOR
 
-function filtrarPorMonto(monto) {
-    const lineasFiltradas = INVERSIONES(linea => linea.montoMaximo >= monto);
-    
-    if (lineasFiltradas.length > 0) {
-        return lineasFiltradas.map(linea => linea.nombre);
-    } else {
-        console.error("No se encontraron resultados");
-        return [];
+class ProductoFinanciero {
+    constructor(id, reglamentacion, nombre, plazo, tasa, usuario, destino, montoMinimo, montoMaximo) {
+      this.id = id;
+      this.reglamentacion = reglamentacion;
+      this.nombre = nombre;
+      this.plazo = plazo;
+      this.tasa = tasa;
+      this.usuario = usuario;
+      this.destino = destino;
+      this.montoMinimo = montoMinimo;
+      this.montoMaximo = montoMaximo;
+    };
+    calcularInteres(plazoSolicitado, montoSolicitado) {
+        if (this.plazo.includes(plazoSolicitado) && montoSolicitado >= this.montoMinimo && (this.montoMaximo === 'indistinto' || montoSolicitado <= this.montoMaximo)) {
+          const tasaIndex = this.plazo.indexOf(plazoSolicitado);
+          const tasa = this.tasa[tasaIndex];
+          const interes = (montoSolicitado * tasa) / 100;
+          return interes;
+        } else {
+          return null;
+        }
     }
 };
 
-const res = filtrarPorMonto(inputBusquedaInversiones.montoAInvertir);
-console.log(res);
+const productosFinancieros = [];
 
-const buscarPorNombre = INVERSIONES.find(function(linea) {
-    return linea.nombre === "plazo fijo";
-});
-
-console.log(buscarPorNombre); */
+fetch("./database/prestamos.json")
+    .then(response => response.json())
+    .then(data => {
+        for (const productoData of data) {
+            const producto = new ProductoFinanciero(...Object.values(productoData));
+            productosFinancieros.push(producto);
+          }
+    })
+    .catch(error => {
+      console.error("Error al cargar los datos:", error);
+    })
