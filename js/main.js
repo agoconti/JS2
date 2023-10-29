@@ -19,11 +19,14 @@ function mostrarInversiones(inversiones) {
 fetch("./database/inversiones.json")
   .then(response => response.json())
   .then(data => {
-    mostrarInversiones(data)
+    setTimeout(() => {
+      mostrarInversiones(data);
+    }, 3000);
   })
   .catch(error => {
     console.error("Error al cargar los datos:", error);
-  })
+  });
+
 
 //FORMULARIO PLAZO FIJO
 
@@ -104,7 +107,9 @@ function mostrarPrestamos(prestamos) {
 fetch("./database/prestamos.json")
   .then(response => response.json())
   .then(data => {
-    mostrarPrestamos(data)
+    setTimeout(() => {
+      mostrarPrestamos(data);
+    }, 3000);
   })
   .catch(error => {
     console.error("Error al cargar los datos:", error);
@@ -148,24 +153,3 @@ formPrestamos.addEventListener("submit", (e) => {
 
 //SIMULACIÓN DE PRÉSTAMOS
 
-let resultadoPF = document.querySelector(".resultado-pf");
-
-let montoEnStorage = JSON.parse(localStorage.getItem("monto-plazo-fijo"));
-let plazoEnStorage = JSON.parse(localStorage.getItem("plazo-plazo-fijo"));
-let tasa;
-
-fetch("./database/inversiones.json")
-  .then(response => response.json())
-  .then(data => { 
-  tasa = data[0].tasa
-    })
-  .catch(error => {
-  console.error("Error al cargar los datos:", error);
-    })
-
-function res(monto, tasa, plazo) {
-  let resultado = Number(monto) + (Number(monto) * ((tasa / 100) / 365) * plazo);
-  resultadoPF.innerText = `Tu capital de $${monto} rendirá $${Number(resultado.toFixed(2))} al cabo de ${plazo} días`;
-  formInversiones.reset(); // Mover aquí para que se reinicie el formulario después de mostrar el resultado.
-  return resultado;
-}
