@@ -1,4 +1,4 @@
-//RENDERIZADO DE INVERSIONES
+//MOSTRAR INVERSIONES
 
 const grillaInversiones = document.querySelector(".inversiones");
 
@@ -79,14 +79,14 @@ fetch("./database/inversiones.json")
   })
   .catch(error => {
   console.error("Error al cargar los datos:", error);
-  })
+  });
 
 function res(monto, tasa, plazo) {
   let resultado = Number(monto) + (Number(monto) * ((tasa / 100) / 365) * plazo);
   resultadoPF.innerText = `Tu capital de $${monto} rendirá $${Number(resultado.toFixed(2))} al cabo de ${plazo} días`;
   formInversiones.reset();
   return resultado;
-}
+};
 
 // CONSTRUCTOR PRÉSTAMOS
 
@@ -105,7 +105,7 @@ class ProductoFinanciero {
   };
 };
 
-//RENDERIZADO DE PRÉSTAMOS
+//MOSTRAR PRÉSTAMOS
 
 const productosFinancieros = [];
 
@@ -136,16 +136,15 @@ function mostrarPrestamos(productosFinancieros) {
     <h3>Destino: ${prestamo.destino}</h3>`;
     grillaPrestamos.appendChild(contenedor);
   });
-}
+};
 
-//BUSQUEDA DE PRÉSTAMOS
+//BUSCAR PRÉSTAMOS
 
 let resultadoPrestamo = document.querySelector(".resultado-prestamo");
 
 let formPrestamos = document.querySelector("#form-prestamos");
 let montoPrestamo = document.querySelector("#monto-prestamo");
 let plazoPrestamo = document.querySelector("#plazo-prestamo");
-
 
 function validarMontoPrestamo() {
   let montoValue = parseFloat(montoPrestamo.value);
@@ -154,53 +153,37 @@ function validarMontoPrestamo() {
     return false;
   }
   return true;
-}
+};
 
 function validarPlazoPrestamo() {
   let plazoValue = parseInt(plazoPrestamo.value);
   if (isNaN(plazoValue) || plazoValue < 3) {
     Swal.fire('Ingresá un plazo válido mayor que 3');
     return false;
-  }
+  };
   return true;
-}
+};
 
-function calcularPrestamo() {
-  const montoSolicitado = parseFloat(montoPrestamo.value);
-  const plazoSolicitado = parseInt(plazoPrestamo.value);
+function buscarPrestamo(montoSolicitado, plazoSolicitado) {
+  montoSolicitado = parseFloat(montoSolicitado);
+  plazoSolicitado = parseInt(plazoSolicitado);
 
-  for (const producto of productosFinancieros) {
-      const interes = calcularInteres(producto, plazoSolicitado, montoSolicitado);
-      if (interes !== null) {
-          resultadoPrestamo.innerText = `Para un monto de $${montoSolicitado} a ${plazoSolicitado} meses en ${producto.nombre}, el interés es de $${interes.toFixed(2)}`;
-          return;
-      }
-  }
+  const prestamoEncontrado = productosFinancieros.find((producto) => {
+    return (producto.plazo === plazoSolicitado && montoSolicitado >= producto.montoMinimo && (producto.montoMaximo === 'indistinto' || montoSolicitado <= producto.montoMaximo));
+  });
 
-  Swal.fire('No se encontró un producto de préstamo adecuado.');
-}
+  if (prestamoEncontrado) {
+    resultadoPrestamo.innerText = `Te sugerimos solicitar la línea ${prestamoEncontrado.reglamentacion}`;
+  } else {
+    Swal.fire('No se encontró un producto de préstamo adecuado.');
+  };
+};
 
 formPrestamos.addEventListener("submit", (e) => {
   e.preventDefault();
   resultadoPrestamo.innerText = "";
 
   if (validarMontoPrestamo() && validarPlazoPrestamo()) {
-    let resultado = res(montoPrestamo.value, tasa, plazoPrestamo.value);
-  }
+    let resultado = buscarPrestamo(montoPrestamo.value, plazoPrestamo.value);
+  };
 });
-
-function calcularInteres(producto, plazoSolicitado, montoSolicitado) {
-  if (
-      producto.plazo.includes(plazoSolicitado) &&
-      montoSolicitado >= producto.montoMinimo &&
-      (producto.montoMaximo === 'indistinto' || montoSolicitado <= producto.montoMaximo)
-  ) {
-      const tasaIndex = producto.plazo.indexOf(plazoSolicitado);
-      const tasa = producto.tasa[tasaIndex];
-      const interes = (montoSolicitado * tasa) / 100;
-      return interes;
-  } else {
-      return null;
-  }
-}
-
